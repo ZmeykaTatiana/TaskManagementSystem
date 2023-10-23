@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:each="task : ${tasks}" >
+  <a th:text="${task.getId()}"></a>
+  <a th:text="${task.getHeader()}"></a>
+  <a th:text="${task.getDescription()}"></a>
+  <a th:text="${task.getDeadline()}"></a>
+  <a th:text="${task.getPriority()}"></a>
+  <a th:text="${task.getStatus()}"></a>
+
+
+</form>
+
+<a href="/task/create">CREATE TASK</a>
+
+</body>
+</html>

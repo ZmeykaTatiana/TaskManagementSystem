@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/task/create}" th:object="${task}">
+    <label th:for="header">HEADER</label>
+    <input type="text" th:field="${task.header}" id="header">
+
+    <label th:for="description">Description</label>
+    <input type="text" th:field="${task.description}" id="description">
+
+    <label th:for="deadline">DeadLINE</label>
+    <input type="text" th:field="${task.deadline}" id="deadline">
+
+    <label th:for="priority">priority</label>
+    <select th:field="${task.priority}">
+        <option th:value="'High'" th:text="HIGH"></option>
+        <option th:value="'Averade'" th:text="Average"></option>
+        <option th:value="'Low'" th:text="Low"></option>
+
+    </select>
+
+    <label th:for="status">STATUS</label>
+    <select th:field="${task.status}">
+        <option th:value="'In Progress'" th:text="In Progress"></option>
+        <option th:value="'Done'" th:text="Done"></option>
+        <option th:value="'Canceled'" th:text="Canceled"></option>
+        <option th:value="'Postponed'" th:text="Postponed"></option>
+    </select>
+
+    <input type="submit" value="Save Task">
+</form>
+
+</body>
+</html>
