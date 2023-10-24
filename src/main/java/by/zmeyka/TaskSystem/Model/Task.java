@@ -35,4 +35,11 @@ public class Task {
     public Task() {
 
     }
+    public Task( String description, String deadline, String priority, String status) {
+
+        this.description = description;
+        this.deadline = deadline;
+        this.priority = priority;
+        this.status = status;
+    }
 }

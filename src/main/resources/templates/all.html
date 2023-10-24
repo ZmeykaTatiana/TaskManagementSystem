@@ -13,6 +13,8 @@
   <a th:text="${task.getDeadline()}"></a>
   <a th:text="${task.getPriority()}"></a>
   <a th:text="${task.getStatus()}"></a>
+    <a th:href="@{/task/delete/{id}(id=${task.getId()})}">DELETE</a>
+    <a th:href="@{/task/update/{id}(id=${task.getId()})}">UPDATE</a>
 
 
 </form>
