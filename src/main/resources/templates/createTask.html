@@ -10,12 +10,16 @@
     <label th:for="header">HEADER</label>
     <input type="text" th:field="${task.header}" id="header">
 
+    <div style="color: red" th:if="${#fields.hasErrors('header')}" th:errors="*{header}"></div>
+    </br>
     <label th:for="description">Description</label>
     <input type="text" th:field="${task.description}" id="description">
-
+    <div style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+    </br>
     <label th:for="deadline">DeadLINE</label>
     <input type="text" th:field="${task.deadline}" id="deadline">
-
+    <div style="color: red" th:if="${#fields.hasErrors('deadline')}" th:errors="*{deadline}"></div>
+    </br>
     <label th:for="priority">priority</label>
     <select th:field="${task.priority}">
         <option th:value="'High'" th:text="HIGH"></option>
@@ -23,7 +27,7 @@
         <option th:value="'Low'" th:text="Low"></option>
 
     </select>
-
+    </br>
     <label th:for="status">STATUS</label>
     <select th:field="${task.status}">
         <option th:value="'InProgress'" th:text="InProgress"></option>
@@ -31,6 +35,7 @@
         <option th:value="'Canceled'" th:text="Canceled"></option>
         <option th:value="'Postponed'" th:text="Postponed"></option>
     </select>
+    </br>
 
     <input type="submit" value="Save Task">
 </form>

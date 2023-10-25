@@ -2,9 +2,11 @@ package by.zmeyka.TaskSystem.Controller;
 
 import by.zmeyka.TaskSystem.Model.Task;
 import by.zmeyka.TaskSystem.Service.TaskService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -32,7 +34,10 @@ public class TaskController {
     }
 
     @PostMapping("/create")
-    public String postTask(@ModelAttribute("task")Task task){
+    public String postTask(@ModelAttribute("task") @Valid Task task, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "createTask";
+        }
         service.addTask(task);
         return "redirect:/task/all";
     }
@@ -53,7 +58,11 @@ public class TaskController {
 
 
     @PostMapping("/update/{id}")
-    public String update(@PathVariable("id")int id,@ModelAttribute Task task){
+    public String update(@PathVariable("id")int id,@ModelAttribute("task") @Valid Task task,
+                         BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "update";
+        }
         service.update(id,task);
         return "redirect:/task/all";
 
