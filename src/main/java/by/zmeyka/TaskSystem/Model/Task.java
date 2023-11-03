@@ -33,6 +33,14 @@ public class Task {
 
     private String status;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id",referencedColumnName = "id")
+    private User user;
+
+    public Task() {
+
+    }
+
     public Task(int id, String description, String deadline, String priority, String status) {
         this.id = id;
         this.description = description;
@@ -40,14 +48,14 @@ public class Task {
         this.priority = priority;
         this.status = status;
     }
-    public Task() {
 
-    }
-    public Task( String description, String deadline, String priority, String status) {
 
+    public Task(String header, String description, String deadline, String priority, String status, User user) {
+        this.header = header;
         this.description = description;
         this.deadline = deadline;
         this.priority = priority;
         this.status = status;
+        this.user = null;
     }
 }

@@ -35,6 +35,12 @@
         <option th:value="'Canceled'" th:text="Canceled"></option>
         <option th:value="'Postponed'" th:text="Postponed"></option>
     </select>
+    <label th:for="User">User</label>
+    <select th:field="${task.user}">
+        <option th:each="i : ${users}" th:value="${i}" th:text="${i}"
+                ></option>
+    </select>
+
     </br>
 
     <input type="submit" value="Save Task">

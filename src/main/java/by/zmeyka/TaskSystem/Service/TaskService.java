@@ -1,8 +1,14 @@
 package by.zmeyka.TaskSystem.Service;
 
 import by.zmeyka.TaskSystem.Model.Task;
+import by.zmeyka.TaskSystem.Model.User;
 import by.zmeyka.TaskSystem.Repository.TaskRepository;
+import by.zmeyka.TaskSystem.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +19,8 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
-
+    @Autowired
+    private UserRepository userRepository;
 
     public List<Task> showAll(){
         List<Task> list=taskRepository.findAll();
@@ -43,4 +50,13 @@ public class TaskService {
         taskRepository.save(task1);
 
     }
+
+
+
+//    public Page<Task> pagination(int page, int size, String sortByField, String sortDir) {
+//
+//        Sort sort=sortDir.equals("ASC")?Sort.by(sortByField).ascending():Sort.by(sortByField).descending();
+//        Pageable pageable= PageRequest.of(page-1,size,sort);
+//        return taskRepository.findAll(pageable);
+//    }
 }
