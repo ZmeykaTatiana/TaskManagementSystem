@@ -28,7 +28,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
-        httpSecurity.//csrf(csrf->csrf.disable()).
+        httpSecurity.csrf(csrf->csrf.disable()).
                 authorizeRequests()
                .requestMatchers("/user/show").hasRole("ADMIN")
 //                .requestMatchers("/auth/welcome").authenticated()
@@ -36,6 +36,13 @@ public class SecurityConfig {
                 .requestMatchers( "/user/registrate").permitAll()
                 .anyRequest().authenticated()
                 .and()
+                //.formLogin(withDefaults());
+//                .formLogin(form->form.loginPage("/auth/login")
+//                        .loginProcessingUrl("/proc")
+//                        .defaultSuccessUrl("/auth/welcome",true)
+//                        .failureUrl("/auth/login?error")
+//                        .logout(logout->logout.logoutUrl("/logout")
+//                                .logoutSuccessUrl("/auth/login"))
                         .formLogin(form->form.loginPage("/auth/login")
                                 .loginProcessingUrl("/proc")
                                 .defaultSuccessUrl("/auth/welcome", true)

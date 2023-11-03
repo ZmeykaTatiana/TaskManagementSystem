@@ -21,8 +21,12 @@ public class User {
     private String password;
     @Column(name="login")
     private String login;
-    @Column(name="role_id")
-    private String role;
+
+//    @Column(name="role_id")
+//    private String role;
+    @OneToOne
+    @JoinColumn(name="role_id",referencedColumnName = "idrole")
+    private Role role;
 
     @OneToMany(mappedBy = "user")
     private List<Task> taskList;
@@ -32,12 +36,5 @@ public class User {
 
     }
 
-    public User(String name, String surname, String password, String login, String role, List<Task> taskList) {
-        this.name = name;
-        this.surname = surname;
-        this.password = password;
-        this.login = login;
-        this.role = role;
-        this.taskList = taskList;
-    }
+
 }

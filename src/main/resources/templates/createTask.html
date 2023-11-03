@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -34,12 +34,13 @@
         <option th:value="'Done'" th:text="Done"></option>
         <option th:value="'Canceled'" th:text="Canceled"></option>
         <option th:value="'Postponed'" th:text="Postponed"></option>
-    </select>
-    <label th:for="User">User</label>
-    <select th:field="${task.user}">
-        <option th:each="i : ${users}" th:value="${i}" th:text="${i}"
-                ></option>
-    </select>
+<!--    </select>-->
+<!--    <label  th:for="User">User</label>-->
+<!--    <select  th:field="${task.user}"  >-->
+<!--         <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.surname}"-->
+<!--                ></option>-->
+<!--    </select>-->
+
 
     </br>
 

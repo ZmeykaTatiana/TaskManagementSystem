@@ -32,6 +32,8 @@ public class TaskService {
         return task;
     }
     public void addTask(Task task){
+        User user=userRepository.getById(2);
+        task.setUser(user);
         taskRepository.save(task);
     }
 
@@ -50,6 +52,17 @@ public class TaskService {
         taskRepository.save(task1);
 
     }
+
+    public List<Task> findTaskWithSorting(String field, String direction) {
+        Sort sort = Sort.by(Sort.Order.by(field));
+        if ("asc".equalsIgnoreCase(direction)) {
+            sort = sort.ascending();
+        } else {
+            sort = sort.descending();
+        }
+        return taskRepository.findAll(sort);
+    }
+
 
 
 

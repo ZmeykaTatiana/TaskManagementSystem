@@ -37,6 +37,8 @@ public class Task {
     @JoinColumn(name = "user_id",referencedColumnName = "id")
     private User user;
 
+
+
     public Task() {
 
     }

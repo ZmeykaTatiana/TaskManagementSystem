@@ -1,6 +1,7 @@
 package by.zmeyka.TaskSystem.Controller;
 
 import by.zmeyka.TaskSystem.Model.Task;
+import by.zmeyka.TaskSystem.Model.User;
 import by.zmeyka.TaskSystem.Service.TaskService;
 import by.zmeyka.TaskSystem.Service.UserService;
 import jakarta.validation.Valid;
@@ -25,8 +26,12 @@ public class TaskController {
 
 
     @GetMapping("/all")
-    public String getAllTask(Model model){
+    public String getAllTask(Model model
+//                             @RequestParam(name = "sort", required = false, defaultValue = "fieldName") String sort,
+//                             @RequestParam(name = "order", required = false, defaultValue = "asc") String order
+                            ){
         model.addAttribute("tasks",service.showAll());
+
         return "all";
 
     }
@@ -41,7 +46,8 @@ public class TaskController {
 
     @PostMapping("/create")
     public String postTask(@ModelAttribute("task") @Valid Task task, BindingResult bindingResult,Model model){
-        model.addAttribute("users",userService.getAll() );
+        List<User> users=userService.getAll();
+        model.addAttribute("users",users);
         if(bindingResult.hasErrors()){
             return "createTask";
         }
